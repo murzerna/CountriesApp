@@ -1,0 +1,43 @@
+#include <iostream>
+#include <string>
+#include <vector>
+
+using namespace std;
+
+int main() {
+    // vector of countries
+    vector<string> countries = {
+            "Abkhazia", "Australia", "Austria", "Azerbaijan", "Albania", "Algeria", "Angola", "Andorra", "Antigua and Barbuda", "Argentina", "Armenia", "Afghanistan", "Bahamas", "Bangladesh", "Barbados", "Bahrain", "Belize", "Belarus", "Belgium", "Benin", "Bulgaria", "Bolivia", "Bosnia and Herzegovina", "Botswana", "Brazil", "Brunei", "Burkina Faso", "Burundi", "Bhutan", "Vanuatu", "Vatican City", "Great Britain", "Hungary", "Venezuela", "East Timor", "Vietnam", "Gabon", "Haiti", "Guyana", "Gambia", "Ghana", "Guatemala", "Guinea", "Guinea-Bissau", "Germany", "Honduras", "State of Palestine", "Grenada", "Greece", "Georgia", "Denmark", "Djibouti", "Dominica", "Dominican Republic", "DR Congo", "Egypt", "Zambia", "Zimbabwe", "Israel", "India", "Indonesia", "Jordan", "Iraq", "Iran", "Cape Verde", "Ireland", "Iceland", "Spain", "Italy", "Kazakhstan", "Cambodia", "Cameroon", "Canada", "Qatar", "Kenya", "Cyprus", "Kyrgyzstan", "Kiribati", "China", "DPRK", "Colombia", "Comoros", "Costa Rica", "Ivory Coast", "Cuba", "Kuwait", "Laos", "Latvia", "Lesotho", "Liberia", "Lebanon", "Libya", "Liechtenstein", "Lithuania", "Luxembourg", "Mauritius", "Madagascar", "Malawi", "Malaysia", "Mali", "Maldives", "Malta", "Morocco", "Marshall Islands", "Mexico", "Mozambique", "Moldova", "Monaco", "Mongolia", "Myanmar", "Namibia", "Nauru", "Nepal", "Niger", "Nigeria", "Netherlands", "Nicaragua", "New Zealand", "Norway", "Norway", "UAE", "Oman", "Pakistan", "Palau", "Panama", "Papua - New Guinea", "Paraguay", "Peru", "Poland", "Portugal", "Republic of the Congo", "Republic of Korea", "Russia", "Rwanda", "Romania", "El Salvador", "Samoa", "San Marino", "Sao Tome and Principe", "Saudi Arabia", "North Macedonia", "Seychelles", "Senegal", "Saint Vincent and the Grenadines", "Saint Kitts and Nevis", "Saint Lucia", "Serbia", "Singapore", "Syria", "Slovakia", "Slovenia", "Solomon Islands", "Somalia", "Sudan", "Suriname", "USA", "Sierra Leone", "Tajikistan", "Thailand", "Tanzania", "Togo", "Tonga", "Trinidad and Tobago", "Tuvalu", "Tunisia", "Turkmenistan", "Turkey", "Uganda", "Uzbekistan", "Ukraine", "Uruguay", "Federated States of Micronesia", "Fiji", "Philippines", "Finland", "France", "Croatia", "CAR", "Chad", "Montenegro", "Czech Republic", "Chile", "Switzerland", "Sweden", "Sri Lanka", "Ecuador", "Equatorial Guinea", "Eritrea", "Eswatini", "Estonia", "Ethiopia", "South Africa", "South Ossetia", "South Sudan", "Jamaica", "Japan"
+    };
+
+    while (true) {
+        cout << "Enter a letter to filter the list of countries (or enter 'q' to quit): ";
+        char letter;
+        cin >> letter;
+        if (letter == 'q') {
+            break;
+        }
+
+        cout << "Enter 1 to display countries starting with the letter, 2 to display countries ending with the letter, or 3 to display countries not containing the letter: ";
+        int option;
+        cin >> option;
+
+        cout << "Countries: " << endl;
+        for (const string& country : countries) {
+            bool displayCountry = false;
+            if (option == 1 && country[0] == letter) {
+                displayCountry = true;
+            } else if (option == 2 && country[country.size() - 1] == letter) {
+                displayCountry = true;
+            } else if (option == 3 && country.find(letter) == string::npos) {
+                displayCountry = true;
+            }
+            if (displayCountry) {
+                cout << country << endl;
+            }
+        }
+        cout << endl;
+    }
+
+    return 0;
+}
